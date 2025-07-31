@@ -18,7 +18,7 @@ def chat():
     input = msg
     return get_Chat_response(input)
 
-def get_Chat_response(text, chat_history=[]):
+'''def get_Chat_response(text, chat_history=[]):
     # Construa histórico no formato de diálogo
     prompt = """You are an expert assistant who only answers questions about Taylor Swift.  
                 You know everything about her albums, songs, tours, personal life (public info), and career.  
@@ -36,11 +36,11 @@ def get_Chat_response(text, chat_history=[]):
     response_ids = model.generate(input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id)
     response = tokenizer.decode(response_ids[:, input_ids.shape[-1]:][0], skip_special_tokens=True)
 
-    return response
+    return response'''
 
 
 
-'''def get_Chat_response(text):
+def get_Chat_response(text):
     # Let's chat for 5 lines
     for step in range(5):
         # encode the new user input, add the eos_token and return a tensor in Pytorch
@@ -53,7 +53,7 @@ def get_Chat_response(text, chat_history=[]):
         chat_history_ids = model.generate(bot_input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id)
 
         # pretty print last ouput tokens from bot
-        return tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)'''
+        return tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
     
 if __name__ == '__main__':
     app.run()
